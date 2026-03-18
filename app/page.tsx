@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, ArrowRight, X, Clock, Calendar, CheckCircle, Car, Users, Camera, Utensils, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { sendToBitrix } from './actions';
 
 const tours = [
   {
@@ -110,8 +111,12 @@ const galleryImages = [
 export default function Home() {
   const [modalTour, setModalTour] = useState<any>(null);
   const [selectedDate, setSelectedDate] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');   // ← Добавлено!
+  const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
@@ -125,17 +130,35 @@ export default function Home() {
   const closeModal = () => {
     setModalTour(null);
     setSelectedDate('');
+    setName('');
+    setPhone('');
+    setMessage('');
   };
 
-  const handleBook = () => {
-    if (!selectedDate) {
-      alert("Пожалуйста, выберите дату поездки");
+  const handleBook = async () => {
+    if (!selectedDate || !name || !phone) {
+      alert("Заполните имя, телефон и дату");
       return;
     }
-    setSuccessMessage(`Заявка на тур "${modalTour.titleRu}" на ${selectedDate} успешно отправлена!`);
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 4500);
-    closeModal();
+
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append('tour', modalTour.titleRu);
+    formData.append('date', selectedDate);
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('message', message);
+
+    try {
+      await sendToBitrix(formData);
+      setSuccessMessage(`Заявка на тур "${modalTour.titleRu}" на ${selectedDate} успешно отправлена!`);
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 4500);
+      closeModal();
+    } catch (e) {
+      alert('Ошибка отправки в Bitrix24. Проверьте webhook в .env.local');
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -144,7 +167,7 @@ export default function Home() {
       <nav className="bg-white shadow-sm sticky top-0 z-50 border-b">
         <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <img src="/logo.png" alt="GMS Logo" className="h-25" />
+            <img src="/logo.png" alt="GMS Logo" className="h-20" />
             <div>
               <div className="font-bold text-5xl tracking-tighter text-[#0A2540]">GMS</div>
               <div className="text-sm text-stone-500 -mt-1 font-medium">Global Migration Solutions</div>
@@ -156,7 +179,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO со слайд-шоу */}
+      {/* HERO */}
       <header className="relative h-screen flex items-center overflow-hidden">
         {galleryImages.map((img, index) => (
           <motion.img
@@ -278,7 +301,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* МОДАЛЬНОЕ ОКНО + уведомление */}
+      {/* МОДАЛЬНОЕ ОКНО */}
       <AnimatePresence>
         {modalTour && (
           <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4" onClick={closeModal}>
@@ -298,42 +321,23 @@ export default function Home() {
                   <X size={32} className="text-[#0A2540]" />
                 </button>
               </div>
+
               <div className="p-10">
                 <h2 className="text-4xl font-bold mb-6 text-[#0A2540]">{modalTour.titleRu}</h2>
-                <p className="text-lg text-stone-700 leading-relaxed mb-12">{modalTour.descRu}</p>
-                {modalTour.programRu && modalTour.programRu.length > 0 && (
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#0A2540]">
-                      <Clock className="text-emerald-600" /> Программа тура
-                    </h3>
-                    <div className="space-y-5">
-                      {modalTour.programRu.map((item: any, i: number) => (
-                        <div key={i} className="flex gap-6 bg-stone-50 p-6 rounded-2xl">
-                          <div className="font-mono text-emerald-600 font-semibold bg-white px-5 py-2 rounded-xl shadow-sm min-w-[85px] text-center">
-                            {item.time}
-                          </div>
-                          <div className="flex-1 text-[17px] text-stone-700">{item.text}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div className="bg-stone-50 p-8 rounded-3xl mb-10">
-                  <p className="font-semibold mb-4 text-lg flex items-center gap-2 text-[#0A2540]">
-                    <Calendar className="text-emerald-600" /> Выберите дату поездки
-                  </p>
-                  <input 
-                    type="date" 
-                    value={selectedDate} 
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                    className="w-full p-6 text-lg border border-stone-300 rounded-2xl focus:border-emerald-600 text-[#0A2540] font-medium"
-                  />
+
+                <div className="space-y-6 mb-8">
+                  <input type="text" placeholder="Ваше имя *" value={name} onChange={e => setName(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
+                  <input type="tel" placeholder="Телефон *" value={phone} onChange={e => setPhone(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
+                  <input type="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} className="w-full p-6 text-lg border border-stone-300 rounded-2xl focus:border-emerald-600 text-[#0A2540] font-medium" />
+                  <textarea placeholder="Комментарий" value={message} onChange={e => setMessage(e.target.value)} rows={3} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
                 </div>
+
                 <button 
                   onClick={handleBook}
-                  className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 transition"
+                  disabled={isLoading}
+                  className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 disabled:opacity-70 transition"
                 >
-                  Забронировать тур
+                  {isLoading ? 'Отправляем в Bitrix24...' : 'Забронировать тур'}
                 </button>
               </div>
             </motion.div>
