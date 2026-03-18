@@ -140,16 +140,23 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ШАПКА — ЛОГОТИП УБРАН */}
+      {/* ШАПКА С ЛОГОТИПОМ */}
       <nav className="bg-white shadow-sm sticky top-0 z-50 border-b">
-        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-end items-center">
+        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <img src="/logo.png" alt="GMS Logo" className="h-25" />
+            <div>
+              <div className="font-bold text-5xl tracking-tighter text-[#0A2540]">GMS</div>
+              <div className="text-sm text-stone-500 -mt-1 font-medium">Global Migration Solutions</div>
+            </div>
+          </div>
           <a href="tel:+996774880888" className="flex items-center gap-3 text-xl font-medium text-[#0A2540]">
             <Phone className="w-6 h-6" /> +996 774 880 888
           </a>
         </div>
       </nav>
 
-      {/* HERO со слайд-шоу (15 фото гор) */}
+      {/* HERO со слайд-шоу */}
       <header className="relative h-screen flex items-center overflow-hidden">
         {galleryImages.map((img, index) => (
           <motion.img
@@ -172,7 +179,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ТУРЫ — НАДПИСЬ ОЧЕНЬ ЗАМЕТНАЯ */}
+      {/* ТУРЫ */}
       <section id="tours" className="max-w-7xl mx-auto px-8 py-24 bg-stone-50">
         <h2 className="text-6xl font-bold text-center mb-16 text-[#0A2540] tracking-tighter">Все туры</h2>
         <div className="grid md:grid-cols-3 gap-10">
@@ -197,7 +204,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ */}
+      {/* УСЛУГИ */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="text-5xl font-bold text-center mb-6 text-[#0A2540]">Дополнительные услуги</h2>
@@ -234,7 +241,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ — без карты Google */}
+      {/* КОНТАКТЫ */}
       <section id="contacts" className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="text-5xl font-bold text-center mb-16 text-[#0A2540]">Контакты</h2>
@@ -248,8 +255,6 @@ export default function Home() {
                 <MapPin className="text-emerald-600 w-7 h-7" /> Исакеева 32/2, Бишкек, Кыргызстан
               </p>
             </div>
-
-            {/* Форма обратной связи */}
             <div>
               <h4 className="font-semibold mb-6 text-lg text-[#0A2540]">Напишите нам</h4>
               <div className="space-y-6">
@@ -261,8 +266,6 @@ export default function Home() {
                 </button>
               </div>
             </div>
-
-            {/* Кнопки WA и Telegram */}
             <div className="flex gap-6 mt-12">
               <a href="https://wa.me/996774880888" target="_blank" className="flex-1 bg-green-500 text-white py-5 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 hover:bg-green-600 transition">
                 WhatsApp
@@ -275,7 +278,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* МОДАЛЬНОЕ ОКНО */}
+      {/* МОДАЛЬНОЕ ОКНО + уведомление */}
       <AnimatePresence>
         {modalTour && (
           <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4" onClick={closeModal}>
