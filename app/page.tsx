@@ -1,7 +1,7 @@
 // app/page.tsx
 'use client';
 import { useState, useEffect } from 'react';
-import { Mountain, Phone, ArrowRight, X, Clock, Calendar, CheckCircle, Car, Users, Camera, Utensils, MapPin } from 'lucide-react';
+import { Phone, ArrowRight, X, Clock, Calendar, CheckCircle, Car, Users, Camera, Utensils, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const tours = [
@@ -140,23 +140,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ШАПКА */}
+      {/* ШАПКА — ЛОГОТИП УБРАН */}
       <nav className="bg-white shadow-sm sticky top-0 z-50 border-b">
-        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Mountain className="w-12 h-12 text-emerald-600" />
-            <div>
-              <div className="font-bold text-4xl tracking-tighter text-[#0A2540]">GMS</div>
-              <div className="text-xs text-stone-500 -mt-1">Global Migration Solutions</div>
-            </div>
-          </div>
-          <a href="tel:+996774880888" className="flex items-center gap-3 text-lg font-medium text-[#0A2540]">
-            <Phone className="w-5 h-5" /> +996 774 880 888
+        <div className="max-w-7xl mx-auto px-8 py-6 flex justify-end items-center">
+          <a href="tel:+996774880888" className="flex items-center gap-3 text-xl font-medium text-[#0A2540]">
+            <Phone className="w-6 h-6" /> +996 774 880 888
           </a>
         </div>
       </nav>
 
-      {/* HERO со слайд-шоу (15 фото гор Кыргызстана) */}
+      {/* HERO со слайд-шоу (15 фото гор) */}
       <header className="relative h-screen flex items-center overflow-hidden">
         {galleryImages.map((img, index) => (
           <motion.img
@@ -179,9 +172,9 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ТУРЫ */}
+      {/* ТУРЫ — НАДПИСЬ ОЧЕНЬ ЗАМЕТНАЯ */}
       <section id="tours" className="max-w-7xl mx-auto px-8 py-24 bg-stone-50">
-        <h2 className="text-5xl font-bold text-center mb-16">Все туры</h2>
+        <h2 className="text-6xl font-bold text-center mb-16 text-[#0A2540] tracking-tighter">Все туры</h2>
         <div className="grid md:grid-cols-3 gap-10">
           {tours.map((tour) => (
             <motion.div
@@ -241,45 +234,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ */}
+      {/* КОНТАКТЫ — без карты Google */}
       <section id="contacts" className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="text-5xl font-bold text-center mb-16 text-[#0A2540]">Контакты</h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-stone-50 p-10 rounded-3xl shadow">
-              <h3 className="text-2xl font-bold mb-8 text-[#0A2540]">Связаться с нами</h3>
-              <div className="space-y-6 mb-12">
-                <p className="flex items-center gap-4 text-[#0A2540] font-semibold text-xl">
-                  <Phone className="text-emerald-600 w-7 h-7" /> +996 774 880 888
-                </p>
-                <p className="flex items-center gap-4 text-[#0A2540] font-semibold text-xl">
-                  <MapPin className="text-emerald-600 w-7 h-7" /> Исакеева 32/2, Бишкек, Кыргызстан
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-6 text-lg text-[#0A2540]">Напишите нам</h4>
-                <div className="space-y-6">
-                  <input type="text" placeholder="Ваше имя" className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
-                  <input type="tel" placeholder="Телефон" className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
-                  <textarea placeholder="Сообщение" rows={4} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]"></textarea>
-                  <button className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 transition">
-                    Отправить сообщение
-                  </button>
-                </div>
-              </div>
-              <div className="flex gap-6 mt-12">
-                <a href="https://wa.me/996774880888" target="_blank" className="flex-1 bg-green-500 text-white py-5 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 hover:bg-green-600 transition">
-                  WhatsApp
-                </a>
-                <a href="https://t.me/gms_tours" target="_blank" className="flex-1 bg-blue-500 text-white py-5 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 hover:bg-blue-600 transition">
-                  Telegram
-                </a>
+          <div className="max-w-2xl mx-auto bg-stone-50 p-12 rounded-3xl shadow">
+            <h3 className="text-2xl font-bold mb-8 text-[#0A2540]">Связаться с нами</h3>
+            <div className="space-y-6 mb-12">
+              <p className="flex items-center gap-4 text-[#0A2540] font-semibold text-xl">
+                <Phone className="text-emerald-600 w-7 h-7" /> +996 774 880 888
+              </p>
+              <p className="flex items-center gap-4 text-[#0A2540] font-semibold text-xl">
+                <MapPin className="text-emerald-600 w-7 h-7" /> Исакеева 32/2, Бишкек, Кыргызстан
+              </p>
+            </div>
+
+            {/* Форма обратной связи */}
+            <div>
+              <h4 className="font-semibold mb-6 text-lg text-[#0A2540]">Напишите нам</h4>
+              <div className="space-y-6">
+                <input type="text" placeholder="Ваше имя" className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
+                <input type="tel" placeholder="Телефон" className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
+                <textarea placeholder="Сообщение" rows={4} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]"></textarea>
+                <button className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 transition">
+                  Отправить сообщение
+                </button>
               </div>
             </div>
-            <div className="rounded-3xl overflow-hidden shadow">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.5!2d74.58!3d42.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDUyJzEyLjAiTiA3NMKwMzUnMDAuMCJF" 
-                width="100%" height="520" className="rounded-3xl" allowFullScreen loading="lazy" />
+
+            {/* Кнопки WA и Telegram */}
+            <div className="flex gap-6 mt-12">
+              <a href="https://wa.me/996774880888" target="_blank" className="flex-1 bg-green-500 text-white py-5 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 hover:bg-green-600 transition">
+                WhatsApp
+              </a>
+              <a href="https://t.me/gms_tours" target="_blank" className="flex-1 bg-blue-500 text-white py-5 rounded-2xl text-lg font-medium flex items-center justify-center gap-3 hover:bg-blue-600 transition">
+                Telegram
+              </a>
             </div>
           </div>
         </div>
@@ -298,14 +288,17 @@ export default function Home() {
             >
               <div className="relative h-80 md:h-96">
                 <img src={modalTour.img} className="w-full h-full object-cover" />
-                <button onClick={closeModal} className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center text-4xl shadow-2xl hover:bg-gray-100 border border-gray-200">
+                <button 
+                  onClick={closeModal}
+                  className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center text-4xl shadow-2xl hover:bg-gray-100 border border-gray-200"
+                >
                   <X size={32} className="text-[#0A2540]" />
                 </button>
               </div>
               <div className="p-10">
                 <h2 className="text-4xl font-bold mb-6 text-[#0A2540]">{modalTour.titleRu}</h2>
                 <p className="text-lg text-stone-700 leading-relaxed mb-12">{modalTour.descRu}</p>
-                {modalTour.programRu && (
+                {modalTour.programRu && modalTour.programRu.length > 0 && (
                   <div className="mb-12">
                     <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#0A2540]">
                       <Clock className="text-emerald-600" /> Программа тура
@@ -326,9 +319,17 @@ export default function Home() {
                   <p className="font-semibold mb-4 text-lg flex items-center gap-2 text-[#0A2540]">
                     <Calendar className="text-emerald-600" /> Выберите дату поездки
                   </p>
-                  <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="w-full p-6 text-lg border border-stone-300 rounded-2xl focus:border-emerald-600 text-[#0A2540] font-medium" />
+                  <input 
+                    type="date" 
+                    value={selectedDate} 
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full p-6 text-lg border border-stone-300 rounded-2xl focus:border-emerald-600 text-[#0A2540] font-medium"
+                  />
                 </div>
-                <button onClick={handleBook} className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 transition">
+                <button 
+                  onClick={handleBook}
+                  className="w-full py-6 bg-emerald-600 text-white rounded-3xl text-xl font-bold hover:bg-emerald-700 transition"
+                >
                   Забронировать тур
                 </button>
               </div>
@@ -341,7 +342,12 @@ export default function Home() {
       <AnimatePresence>
         {showSuccess && (
           <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[10000]">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 30 }} className="bg-[#0A2540] text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              className="bg-[#0A2540] text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4"
+            >
               <CheckCircle className="w-7 h-7 text-emerald-400" />
               <div>
                 <p className="font-semibold text-lg">{successMessage}</p>
