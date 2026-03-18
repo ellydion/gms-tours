@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar';   // ← ИСПРАВЛЕННЫЙ ПУТЬ
 import { X, Clock, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendToBitrix } from '../actions';
@@ -178,7 +178,7 @@ export default function ToursPage() {
             >
               <div className="relative h-80 md:h-96">
                 <img src={modalTour.img} className="w-full h-full object-cover" />
-                <button onClick={closeModal} className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-2xl hover:bg-gray-100">
+                <button onClick={closeModal} className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center text-4xl shadow-2xl hover:bg-gray-100 border border-gray-200">
                   <X size={32} className="text-[#0A2540]" />
                 </button>
               </div>
