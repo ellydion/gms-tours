@@ -5,6 +5,7 @@ import { Phone, ArrowRight, X, Clock, Calendar, CheckCircle, Car, Users, Camera,
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendToBitrix } from './actions';
 
+// ====================== ДАННЫЕ ТУРОВ ======================
 const tours = [
   {
     id: 1,
@@ -83,6 +84,7 @@ const tours = [
   }
 ];
 
+// ====================== УСЛУГИ ======================
 const services = [
   { icon: <Car className="w-12 h-12 text-emerald-600" />, title: "Комфортный трансфер", desc: "Современные автомобили и микроавтобусы с опытными водителями по всему Кыргызстану" },
   { icon: <Users className="w-12 h-12 text-emerald-600" />, title: "Русскоязычные и англоязычные гиды", desc: "Профессиональные гиды, говорящие на русском и английском языках" },
@@ -90,6 +92,7 @@ const services = [
   { icon: <Utensils className="w-12 h-12 text-emerald-600" />, title: "Организация питания", desc: "Национальная кухня, пикники в горах и полноценное питание на маршрутах" },
 ];
 
+// ====================== ГАЛЕРЕЯ ======================
 const galleryImages = [
   "https://picsum.photos/id/1015/2000/1200",
   "https://picsum.photos/id/201/2000/1200",
@@ -115,10 +118,11 @@ export default function Home() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(''); // ← Добавлено!
+  const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
+  // Автосмена слайдов в Hero и услугах
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % galleryImages.length);
@@ -179,7 +183,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* HERO СО СЛАЙД-ШОУ */}
       <header className="relative h-screen flex items-center overflow-hidden">
         {galleryImages.map((img, index) => (
           <motion.img
@@ -227,7 +231,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* УСЛУГИ */}
+      {/* ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-8">
           <h2 className="text-5xl font-bold text-center mb-6 text-[#0A2540]">Дополнительные услуги</h2>
@@ -301,7 +305,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* МОДАЛЬНОЕ ОКНО */}
+      {/* МОДАЛЬНОЕ ОКНО С ФОРМОЙ */}
       <AnimatePresence>
         {modalTour && (
           <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4" onClick={closeModal}>

@@ -3,7 +3,7 @@
 
 export async function sendToBitrix(formData: FormData) {
   const webhook = process.env.BITRIX_WEBHOOK_URL;
-  if (!webhook) throw new Error('BITRIX_WEBHOOK_URL не найден в настройках Vercel');
+  if (!webhook) throw new Error('BITRIX_WEBHOOK_URL не найден');
 
   const name = (formData.get('name') as string || '').trim();
   const phone = (formData.get('phone') as string || '').trim();
@@ -19,18 +19,15 @@ export async function sendToBitrix(formData: FormData) {
     body: JSON.stringify({
       fields: {
         TITLE: title,
-        NAME: name,
+        NAME: name || 'Клиент с сайта',
         PHONE: [{ VALUE: phone, VALUE_TYPE: 'WORK' }],
-        COMMENTS: `Тур: ${tour}\nДата: ${date}\nКлиент: ${name}\nТелефон: ${phone}\nСообщение: ${message || '—'}`,
+        COMMENTS: `Тур: ${tour}\nДата: ${date}\nИмя: ${name}\nТелефон: ${phone}\nСообщение: ${message || '—'}`,
         SOURCE_ID: 'WEB',
         STAGE_ID: 'NEW'
       }
     })
   });
 
-  if (!res.ok) {
-    const errorText = await res.text();
-    throw new Error(`Bitrix24 ошибка: ${errorText}`);
-  }
+  if (!res.ok) throw new Error('Ошибка Bitrix24');
   return true;
 }
