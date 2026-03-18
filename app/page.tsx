@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 import { useState, useEffect } from 'react';
 import { Phone, ArrowRight, X, Clock, Calendar, CheckCircle, Car, Users, Camera, Utensils, MapPin } from 'lucide-react';
@@ -9,7 +8,7 @@ const tours = [
   {
     id: 1,
     titleRu: "Ущелье Кегети + Иссык-Ата + Бурана",
-    price: 3050, // снижено на 1000
+    price: 3050,
     durationRu: "1 день",
     img: "https://picsum.photos/id/1015/800/600",
     descRu: "Золотое кольцо Чуйской долины — must-see тур для первого знакомства с Кыргызстаном. Вы прикоснётесь к древней истории у башни Бурана, насладитесь мощью 20-метрового водопада и искупаетесь в целебных горячих источниках.",
@@ -25,7 +24,7 @@ const tours = [
   {
     id: 2,
     titleRu: "Водопад Шаар + озеро Коль-Тор",
-    price: 4550, // снижено на 1000
+    price: 4550,
     durationRu: "1 день",
     img: "https://picsum.photos/id/102/800/600",
     descRu: "Эмоциональный тур к одному из самых высоких водопадов региона и бирюзовому горному озеру Коль-Тор.",
@@ -40,7 +39,7 @@ const tours = [
   {
     id: 3,
     titleRu: "Ала-Арча — ледник Ака-Сай",
-    price: 3950, // снижено на 1000
+    price: 3950,
     durationRu: "1 день",
     img: "https://picsum.photos/id/251/800/600",
     descRu: "Классический горный трекинг в национальном парке Ала-Арча к величественному леднику на фоне снежных вершин.",
@@ -55,7 +54,7 @@ const tours = [
   {
     id: 4,
     titleRu: "Сон-Куль — юрты и кочевники (2 дня)",
-    price: 12500, // снижено на 1000
+    price: 12500,
     durationRu: "2 дня / 1 ночь",
     img: "https://picsum.photos/id/160/800/600",
     descRu: "Погружение в кочевую жизнь. Ночь в юрте у высокогорного озера Сон-Куль, конные прогулки и дегустация национальных продуктов.",
@@ -70,7 +69,7 @@ const tours = [
   {
     id: 5,
     titleRu: "Иссык-Куль + Кара-Дере (3 дня)",
-    price: 21500, // снижено на 1000
+    price: 21500,
     durationRu: "3 дня / 2 ночи",
     img: "https://picsum.photos/id/201/800/600",
     descRu: "Комфортный отдых на самом большом высокогорном озере мира. Пляжи, горячие источники, древние петроглифы и потрясающие горные пейзажи.",
@@ -120,7 +119,9 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentImage((prev) => (prev + 1) % galleryImages.length), 5000);
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % galleryImages.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -161,7 +162,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ШАПКА С УВЕЛИЧЕННЫМ ЛОГОТИПОМ (h-24) */}
+      {/* ШАПКА С УВЕЛИЧЕННЫМ ЛОГОТИПОМ И КНОПКОЙ ПЕРЕВОДА СПРАВА */}
       <nav className="bg-white shadow-sm sticky top-0 z-50 border-b">
         <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -171,6 +172,20 @@ export default function Home() {
               <div className="text-sm text-stone-500 -mt-1 font-medium">Global Migration Solutions</div>
             </div>
           </div>
+
+          {/* КНОПКА ПЕРЕВОДА СПРАВА В УГЛУ */}
+          <div className="flex gap-2">
+            {(['ru', 'en', 'hi', 'ar'] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => window.location.reload()} // временно — можно улучшить позже
+                className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 hover:bg-gray-200 transition"
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
           <a href="tel:+996774880888" className="flex items-center gap-3 text-xl font-medium text-[#0A2540]">
             <Phone className="w-6 h-6" /> +996 774 880 888
           </a>
@@ -342,7 +357,6 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* Форма бронирования */}
                 <div className="space-y-6">
                   <input type="text" placeholder="Ваше имя *" value={name} onChange={e => setName(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
                   <input type="tel" placeholder="Телефон *" value={phone} onChange={e => setPhone(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
