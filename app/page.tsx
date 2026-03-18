@@ -115,7 +115,7 @@ export default function Home() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');   // ← Добавлено!
+  const [successMessage, setSuccessMessage] = useState(''); // ← Добавлено!
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -136,7 +136,7 @@ export default function Home() {
   };
 
   const handleBook = async () => {
-    if (!selectedDate || !name || !phone) {
+    if (!name.trim() || !phone.trim() || !selectedDate) {
       alert("Заполните имя, телефон и дату");
       return;
     }
@@ -145,9 +145,9 @@ export default function Home() {
     const formData = new FormData();
     formData.append('tour', modalTour.titleRu);
     formData.append('date', selectedDate);
-    formData.append('name', name);
-    formData.append('phone', phone);
-    formData.append('message', message);
+    formData.append('name', name.trim());
+    formData.append('phone', phone.trim());
+    formData.append('message', message.trim());
 
     try {
       await sendToBitrix(formData);
@@ -156,7 +156,7 @@ export default function Home() {
       setTimeout(() => setShowSuccess(false), 4500);
       closeModal();
     } catch (e) {
-      alert('Ошибка отправки в Bitrix24. Проверьте webhook в .env.local');
+      alert('Ошибка отправки в Bitrix24. Проверьте webhook в настройках Vercel.');
     }
     setIsLoading(false);
   };
