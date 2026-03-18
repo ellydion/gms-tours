@@ -119,9 +119,7 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % galleryImages.length);
-    }, 5000);
+    const interval = setInterval(() => setCurrentImage((prev) => (prev + 1) % galleryImages.length), 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -178,7 +176,7 @@ export default function Home() {
             {(['ru', 'en', 'hi', 'ar'] as const).map((l) => (
               <button
                 key={l}
-                onClick={() => window.location.reload()} // временно — можно улучшить позже
+                onClick={() => window.location.reload()}
                 className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 hover:bg-gray-200 transition"
               >
                 {l.toUpperCase()}
@@ -314,7 +312,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* МОДАЛЬНОЕ ОКНО — УЛУЧШЕННОЕ */}
+      {/* МОДАЛЬНОЕ ОКНО — УЛУЧШЕННОЕ (информация о туре + форма) */}
       <AnimatePresence>
         {modalTour && (
           <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4" onClick={closeModal}>
@@ -327,10 +325,7 @@ export default function Home() {
             >
               <div className="relative h-80 md:h-96">
                 <img src={modalTour.img} className="w-full h-full object-cover" />
-                <button 
-                  onClick={closeModal}
-                  className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center text-4xl shadow-2xl hover:bg-gray-100 border border-gray-200"
-                >
+                <button onClick={closeModal} className="absolute top-6 right-6 bg-white rounded-full w-14 h-14 flex items-center justify-center text-4xl shadow-2xl hover:bg-gray-100 border border-gray-200">
                   <X size={32} className="text-[#0A2540]" />
                 </button>
               </div>
@@ -357,6 +352,7 @@ export default function Home() {
                   </div>
                 )}
 
+                {/* Форма бронирования */}
                 <div className="space-y-6">
                   <input type="text" placeholder="Ваше имя *" value={name} onChange={e => setName(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
                   <input type="tel" placeholder="Телефон *" value={phone} onChange={e => setPhone(e.target.value)} className="w-full p-5 border border-stone-300 rounded-2xl focus:border-emerald-600 text-lg text-[#0A2540]" />
