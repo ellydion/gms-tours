@@ -1,0 +1,77 @@
+{
+  "common": {
+    "brand": "GMS",
+    "brandFull": "Global Migration Solutions",
+    "phone": "+996 774 880 888",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "book": "Book now",
+    "more": "Learn more",
+    "from": "from",
+    "som": "KGS",
+    "days": {
+      "1": "1 day",
+      "2": "2 days",
+      "3": "3 days",
+      "4plus": "4+ days"
+    },
+    "region": {
+      "north": "North",
+      "south": "South",
+      "all": "All"
+    },
+    "nav": {
+      "home": "Home",
+      "tours": "Tours",
+      "visas": "Visas",
+      "events": "Events",
+      "about": "About",
+      "contacts": "Contacts"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "tours": "Tours in Kyrgyzstan",
+      "services": "Services"
+    }
+  },
+  "home": {
+    "heroTitle": "Author Tours in Kyrgyzstan",
+    "heroSubtitle": "Discover the real Kyrgyzstan — mountains, lakes and nomadic culture with local experts",
+    "ctaTours": "View tours",
+    "ctaWhatsapp": "Message on WhatsApp",
+    "popular": "Popular tours",
+    "northTitle": "Northern Kyrgyzstan",
+    "northDesc": "Issyk-Kul, Song-Kul, gorges and canyons near Bishkek",
+    "southTitle": "Southern Kyrgyzstan",
+    "southDesc": "Osh, Arslanbob, Sary-Chelek — ancient forests and turquoise lakes",
+    "whyTitle": "Why choose GMS",
+    "why1": "Author routes",
+    "why1Desc": "We design and run the tours ourselves, not reselling others",
+    "why2": "Local guides",
+    "why2Desc": "We know hidden places and real culture",
+    "why3": "Flexibility",
+    "why3Desc": "Any tour can be adapted to your dates and interests",
+    "why4": "24/7 support",
+    "why4Desc": "We stay in touch before, during and after the trip"
+  },
+  "tours": {
+    "title": "Tours in Kyrgyzstan",
+    "subtitle": "Choose region and duration — we will find the perfect route",
+    "filterAll": "All tours",
+    "filterNorth": "North",
+    "filterSouth": "South",
+    "noResults": "No tours found. Try changing the filters.",
+    "popular": "Popular",
+    "new": "New"
+  },
+  "tour": {
+    "highlights": "Highlights",
+    "includes": "Included",
+    "excludes": "Not included",
+    "program": "Itinerary",
+    "bookNow": "Book this tour",
+    "priceFrom": "Price from",
+    "perPerson": "per person",
+    "contactUs": "Contact us"
+  }
+}
