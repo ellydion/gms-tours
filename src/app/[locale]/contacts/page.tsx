@@ -1,15 +1,9 @@
 import { setRequestLocale } from 'next-intl/server';
 import { MessageCircle, Phone, MapPin, Mail, Send } from 'lucide-react';
-import {
-  WHATSAPP_URL,
-  TELEGRAM_URL,
-  PHONE_DISPLAY,
-  PHONE_2_DISPLAY,
-  EMAIL,
-} from '@/lib/contacts';
+import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY, EMAIL } from '@/lib/contacts';
 
 export default async function ContactsPage({
-  params,
+  params
 }: {
   params: Promise<{ locale: string }>;
 }) {
@@ -99,7 +93,7 @@ export default async function ContactsPage({
           </div>
         </div>
 
-        <div className="flex items-center gap-4 bg-white rounded-2xl p-6 border border-[#E7E5E4] shadow-premium">
+        <div className="flex items-center gap-4 bg-white rounded-2xl p-6 border border-[#E7E5E4] shadow-premium sm:col-span-2">
           <div className="w-12 h-12 rounded-xl bg-[#1C1917]/5 flex items-center justify-center">
             <MapPin className="w-6 h-6 text-[#1C1917]" />
           </div>

@@ -40,6 +40,7 @@ export function TourCard({ tour }: TourCardProps) {
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          quality={80}
         />
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-2">

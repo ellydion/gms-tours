@@ -1,21 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
-import {
-  MessageCircle,
-  Phone,
-  FileCheck,
-  Calendar,
-  Car,
-  MapPin,
-  Users,
-  Award,
-} from 'lucide-react';
+import { MessageCircle, Phone, FileCheck, Calendar, Car, MapPin, Users, Award } from 'lucide-react';
 import { AboutSlideshow } from '@/components/AboutSlideshow';
-import {
-  WHATSAPP_URL,
-  TELEGRAM_URL,
-  PHONE_DISPLAY,
-  PHONE_2_DISPLAY,
-} from '@/lib/contacts';
+import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY } from '@/lib/contacts';
 
 export default async function AboutPage({
   params,
@@ -100,6 +86,7 @@ export default async function AboutPage({
         </p>
       </div>
 
+      {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12">
         {stats.map((item, i) => (
           <div
@@ -113,6 +100,7 @@ export default async function AboutPage({
         ))}
       </div>
 
+      {/* Points */}
       <div className="grid sm:grid-cols-3 gap-5 mb-14">
         {points.map((p, i) => (
           <div
@@ -128,6 +116,7 @@ export default async function AboutPage({
         ))}
       </div>
 
+      {/* Slideshow */}
       <div className="mb-14">
         <AboutSlideshow
           title={isEn ? 'Moments from our work' : 'Моменты нашей работы'}
@@ -139,6 +128,7 @@ export default async function AboutPage({
         </p>
       </div>
 
+      {/* CTA */}
       <div className="flex flex-wrap gap-3">
         <a
           href={WHATSAPP_URL}

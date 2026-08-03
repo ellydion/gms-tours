@@ -72,12 +72,9 @@ export const tours: Tour[] = [
       en: ['Meals', 'Personal expenses', 'Swimwear']
     },
     images: [
-      '/tours/kegety_1.jpg',
-      '/tours/kegety_2.jpg',
-      '/tours/Burana-1.jpg',
-      '/tours/Burana-2.jpg',
-      '/tours/issyk-ata-1.jpg',
-      '/tours/issyk-ata-2.jpg'
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=85',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=85',
+      'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1400&q=85'
     ],
     isPopular: true,
     order: 10
@@ -659,7 +656,9 @@ export const tours: Tour[] = [
       en: ['Airport transfer (on request)', 'Meals']
     },
     images: [
-      '/tours/osh-sulaiman-too.jpg'
+      '/tours/osh-sulaiman-too.jpg',
+      'https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1400&q=85',
+      'https://images.unsplash.com/photo-1555881403-7469c6a5b5e1?w=1400&q=85'
     ],
     order: 100
   }

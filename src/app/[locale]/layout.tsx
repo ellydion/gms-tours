@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/Header';
+import { ChatWidget } from '@/components/ChatWidget';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -30,6 +31,7 @@ export default async function LocaleLayout({
       <div className="min-h-screen flex flex-col antialiased bg-[#FAF7F2] text-[#1C1917]">
         <Header />
         <main className="flex-1">{children}</main>
+        <ChatWidget />
         <footer className="bg-[#1C1917] text-white py-12 mt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between gap-8">

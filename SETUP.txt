@@ -1,0 +1,16 @@
+GMS Tours — полный проект + Admin Phase 1
+========================================
+
+1) npm install
+2) Скопируй .env.example → .env.local и заполни ключи Supabase
+3) В Supabase SQL Editor выполни supabase/schema.sql
+4) npm run dev
+5) Админка: http://localhost:3000/admin/login
+
+Важно:
+- next.config.mjs (не .ts) — совместимость
+- Next.js 15 + App Router (src/app)
+- Формы туров/виз пишут в /api/leads → Supabase
+- LEADS_API_SECRET_OPTIONAL=1 чтобы сайт принимал заявки без заголовка
+
+Vercel: те же env, затем git push.

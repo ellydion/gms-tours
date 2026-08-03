@@ -16,7 +16,6 @@ export function AboutSlideshow({ title }: Props) {
   const [failed, setFailed] = useState<Record<number, boolean>>({});
 
   const hasSlides = slides.length > 0;
-
   const go = useCallback(
     (dir: number) => {
       if (!hasSlides) return;
@@ -45,7 +44,9 @@ export function AboutSlideshow({ title }: Props) {
 
   return (
     <div className="space-y-4">
-      {title && <h2 className="text-2xl font-bold text-[#1C1917]">{title}</h2>}
+      {title && (
+        <h2 className="text-2xl font-bold text-[#1C1917]">{title}</h2>
+      )}
 
       <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-[#E7E5E4] border border-[#E7E5E4]">
         {showPlaceholder ? (
@@ -67,6 +68,7 @@ export function AboutSlideshow({ title }: Props) {
           />
         )}
 
+        {/* Controls */}
         <button
           type="button"
           onClick={() => go(-1)}
@@ -84,6 +86,7 @@ export function AboutSlideshow({ title }: Props) {
           <ChevronRight className="w-5 h-5" />
         </button>
 
+        {/* Dots */}
         <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
           {slides.map((_, i) => (
             <button
@@ -100,6 +103,7 @@ export function AboutSlideshow({ title }: Props) {
         </div>
       </div>
 
+      {/* Thumbnails */}
       <div className="flex gap-2 overflow-x-auto pb-1">
         {slides.map((s, i) => (
           <button
