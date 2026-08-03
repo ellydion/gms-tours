@@ -1,20 +1,21 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { TourGallery } from '@/components/TourGallery';
+import { TourLeadForm } from '@/components/TourLeadForm';
+import { PHONE_DISPLAY, PHONE_2_DISPLAY } from '@/lib/contacts';
 import Link from 'next/link';
 import { getTourBySlug, tours } from '@/lib/tours';
-import { MessageCircle, Phone, Check, X } from 'lucide-react';
+import { Phone, Check, X } from 'lucide-react';
 
 export function generateStaticParams() {
   return tours.flatMap((tour) => [
     { locale: 'ru', slug: tour.slug },
-    { locale: 'en', slug: tour.slug }
+    { locale: 'en', slug: tour.slug },
   ]);
 }
 
 export default async function TourDetailPage({
-  params
+  params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
@@ -37,12 +38,6 @@ export default async function TourDetailPage({
       ? tCommon('days.3')
       : tCommon('days.4plus');
 
-  const whatsappText = encodeURIComponent(
-    isEn
-      ? `Hi! I want to book the tour: ${tour.title.en}`
-      : `Здравствуйте! Хочу забронировать тур: ${tour.title.ru}`
-  );
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Breadcrumb */}
@@ -57,7 +52,6 @@ export default async function TourDetailPage({
       <div className="grid lg:grid-cols-3 gap-10">
         {/* Left content */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Gallery */}
           <TourGallery images={tour.images} title={tour.title[loc]} />
 
           <div>
@@ -77,30 +71,19 @@ export default async function TourDetailPage({
             </p>
           </div>
 
-          {/* Program / Timing */}
+          {/* Program */}
           <div>
             <h2 className="text-xl font-semibold text-[#1C1917] mb-4">{t('program')}</h2>
             <div className="bg-white rounded-2xl p-6 border border-[#E7E5E4] space-y-3">
               {tour.program[loc].map((item, i) => (
                 <div key={i} className="flex gap-3 text-sm">
-                  <span className="text-[#B45309] font-medium shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-[#B45309] font-medium shrink-0">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <span className="text-[#1C1917]">{item}</span>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Highlights */}
-          <div>
-            <h2 className="text-xl font-semibold text-[#1C1917] mb-4">{t('highlights')}</h2>
-            <ul className="space-y-2">
-              {tour.highlights[loc].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-[#0F766E] mt-0.5 shrink-0" />
-                  <span className="text-[#1C1917]">{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Includes / Excludes */}
@@ -137,29 +120,26 @@ export default async function TourDetailPage({
             <div className="text-3xl font-bold text-[#B45309] mb-1">
               {tour.priceFrom.toLocaleString('ru-RU')} {tour.currency}
             </div>
-            <div className="text-sm text-[#78716C] mb-6">{t('perPerson')}</div>
+            <div className="text-sm text-[#78716C] mb-4">{t('perPerson')}</div>
 
-            <a
-              href={`https://wa.me/996774880888?text=${whatsappText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full bg-[#B45309] hover:bg-[#92400E] text-white font-medium py-3.5 rounded-xl transition-premium mb-3"
-            >
-              <MessageCircle className="w-5 h-5" />
-              {t('bookNow')}
-            </a>
+            <TourLeadForm locale={locale} tourTitle={tour.title[loc]} />
 
-            <a
-              href="tel:+996774880888"
-              className="flex items-center justify-center gap-2 w-full border border-[#E7E5E4] hover:border-[#B45309] text-[#1C1917] font-medium py-3.5 rounded-xl transition"
-            >
-              <Phone className="w-5 h-5" />
-              {tCommon('call')}
-            </a>
-
-            <p className="text-xs text-[#78716C] text-center mt-4">
-              {t('contactUs')}
-            </p>
+            <div className="mt-4 pt-4 border-t border-[#E7E5E4] space-y-2">
+              <a
+                href={`tel:${PHONE_DISPLAY.replace(/ /g, '')}`}
+                className="flex items-center justify-center gap-2 w-full border border-[#E7E5E4] hover:border-[#B45309] text-[#1C1917] font-medium py-3 rounded-xl transition text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                {PHONE_DISPLAY}
+              </a>
+              <a
+                href={`tel:${PHONE_2_DISPLAY.replace(/ /g, '')}`}
+                className="flex items-center justify-center gap-2 w-full border border-[#E7E5E4] hover:border-[#B45309] text-[#1C1917] font-medium py-3 rounded-xl transition text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                {PHONE_2_DISPLAY}
+              </a>
+            </div>
           </div>
         </div>
       </div>
