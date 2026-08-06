@@ -72,9 +72,12 @@ export const tours: Tour[] = [
       en: ['Meals', 'Personal expenses', 'Swimwear']
     },
     images: [
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=85',
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=85',
-      'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1400&q=85'
+      '/tours/kegety_1.jpg',
+      '/tours/kegety_2.jpg',
+      '/tours/issyk-ata-1.jpg',
+      '/tours/issyk-ata-2.jpg',
+      '/tours/Burana-1.jpg',
+      '/tours/Burana-2.jpg'
     ],
     isPopular: true,
     order: 10
@@ -128,9 +131,8 @@ export const tours: Tour[] = [
       en: ['Meals', 'Cable car (optional)']
     },
     images: [
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1400&q=85',
-      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=85',
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=85'
+      '/tours/chunkurchak-valley.jpg',
+      '/tours/bridge_1.jpg',
     ],
     isPopular: true,
     isNew: true,
@@ -185,9 +187,11 @@ export const tours: Tour[] = [
       en: ['Meals']
     },
     images: [
-      'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1400&q=85',
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&q=85',
-      'https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=1400&q=85'
+      '/tours/Burana-1.jpg',
+      '/tours/Burana-2.jpg',
+      '/tours/konorchek-1.jpg',
+      '/tours/konorchek-2.jpg',
+      '/tours/konorchek-3.jpg'
     ],
     isPopular: true,
     order: 30
@@ -199,7 +203,7 @@ export const tours: Tour[] = [
     priceFrom: 3950,
     currency: 'сом',
     title: {
-      ru: 'Ала-Арча — ледник Ака-Сай',
+      ru: 'Ала-Арча — ледник Ак-Сай',
       en: 'Ala-Archa — Ak-Sai Glacier'
     },
     shortDescription: {
@@ -207,7 +211,7 @@ export const tours: Tour[] = [
       en: 'Classic mountain day in the national park near Bishkek.'
     },
     description: {
-      ru: 'Национальный парк Ала-Арча — ближайшие настоящие горы к столице. В зависимости от подготовки группы мы идём либо лёгким маршрутом до водопада, либо более серьёзным треком в сторону ледника Ака-Сай. Чистый воздух, хвойный лес, река и виды на пики Тянь-Шаня.',
+      ru: 'Национальный парк Ала-Арча — ближайшие настоящие горы к столице. В зависимости от подготовки группы мы идём либо лёгким маршрутом до водопада, либо более серьёзным треком в сторону ледника Ак-Сай. Чистый воздух, хвойный лес, река и виды на пики Тянь-Шаня.',
       en: 'Ala-Archa National Park is the closest real mountains to the capital. Depending on the group’s fitness we either take an easy route to the waterfall or a more serious trek toward the Ak-Sai glacier. Clean air, coniferous forest, river and views of the Tien Shan peaks.'
     },
     program: {
@@ -241,10 +245,9 @@ export const tours: Tour[] = [
       en: ['Meals']
     },
     images: [
-      'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1400&q=85',
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=85',
-      'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1400&q=85',
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1400&q=85'
+      '/tours/ala-archa-1.jpg',
+      '/tours/ala-archa-2.jpg',
+      '/tours/ak-sai-1.jpg'
     ],
     order: 40
   },
@@ -310,7 +313,7 @@ export const tours: Tour[] = [
     priceFrom: 12500,
     currency: 'сом',
     title: {
-      ru: 'Сон-Куль — юрты и кочевники',
+      ru: 'Сон-Кол — юрты и кочевники',
       en: 'Song-Kul — Yurts & Nomads'
     },
     shortDescription: {
@@ -344,10 +347,11 @@ export const tours: Tour[] = [
       en: ['Lunch', 'Horse riding (optional)']
     },
     images: [
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=85',
-      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=85',
-      'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1400&q=85',
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=85'
+      '/tours/son-kol-2.jpg',
+      '/tours/son-kol-1.jpg',
+      '/tours/son-kol-3.jpg',
+      '/tours/son-kol-4.jpg',
+      '/tours/son-kol-5.jpg',
     ],
     isPopular: true,
     order: 50
