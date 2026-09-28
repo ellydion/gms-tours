@@ -1,27 +1,13 @@
 /**
- * Галерея на странице «О нас».
- * Сейчас — временные фото. Позже замените на свои:
- * положите файлы в public/about/ и пропишите пути вида '/about/1.jpg'
+ * Галерея на странице «О нас» — фото с маршрутов GMS.
  */
 export const ABOUT_GALLERY: { src: string; alt: string }[] = [
-  {
-    src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80',
-    alt: 'Mountains Kyrgyzstan',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80',
-    alt: 'Alpine lake',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80',
-    alt: 'Travel landscape',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=80',
-    alt: 'Mountain viewpoint',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80',
-    alt: 'Peaks',
-  },
+  { src: '/tours/son-kol-1.jpg', alt: 'Сон-Куль — юрты на джайлоо' },
+  { src: '/tours/kegety_1.jpg', alt: 'Ущелье Кегети' },
+  { src: '/tours/Burana-1.jpg', alt: 'Башня Бурана' },
+  { src: '/tours/chunkurchak-valley.jpg', alt: 'Ущелье Чункурчак' },
+  { src: '/tours/ala-archa-1.jpg', alt: 'Ала-Арча' },
+  { src: '/tours/kol-tor-1.jpg', alt: 'Озеро Коль-Тор' },
+  { src: '/tours/konorchek-1.jpg', alt: 'Каньоны Конорчек' },
+  { src: '/tours/issyk-ata-1.jpg', alt: 'Иссык-Ата' },
 ];

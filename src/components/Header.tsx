@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { Phone, MessageCircle, Send, Menu, X } from 'lucide-react';
-import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY } from '@/lib/contacts';
+import { Phone, MessageCircle, Send, Menu, X, Mail } from 'lucide-react';
+import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY, EMAIL } from '@/lib/contacts';
 
 export function Header() {
   const t = useTranslations('common');
@@ -83,6 +83,14 @@ export function Header() {
               >
                 {switchLabel}
               </Link>
+
+              <a
+                href={`mailto:${EMAIL}`}
+                className="hidden xl:inline-flex items-center gap-1.5 text-sm text-[#1C1917] hover:text-[#B45309] px-2"
+              >
+                <Mail className="w-4 h-4" />
+                {EMAIL}
+              </a>
 
               <a
                 href={WHATSAPP_URL}
@@ -169,6 +177,14 @@ export function Header() {
                 >
                   <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0" />
                   WhatsApp
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-[15px] font-medium text-[#1C1917] hover:bg-white"
+                >
+                  <Mail className="w-5 h-5 text-[#B45309] shrink-0" />
+                  {EMAIL}
                 </a>
                 <a
                   href={`tel:${PHONE_DISPLAY.replace(/ /g, '')}`}
