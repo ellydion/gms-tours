@@ -47,7 +47,7 @@ export const tours: Tour[] = [
     highlights: { ru: ['Небесный мост','Виды на Тянь-Шань'], en: ['Sky Bridge','Tien Shan views'] },
     includes: { ru: ['Трансфер','Гид','Вход на мост'], en: ['Transfer','Guide','Bridge entrance'] },
     excludes: { ru: ['Питание'], en: ['Meals'] },
-    images: ['/tours/chunkurchak-valley.jpg','/tours/bridge_1.jpg'],
+    images: ['/tours/Chunkurchak-valley.jpg','/tours/bridge_1.jpg'],
     isPopular: true, isNew: true, order: 20
   },
   {
@@ -107,7 +107,7 @@ export const tours: Tour[] = [
     highlights: { ru: ['Жети-Огуз','Каньон Сказка'], en: ['Jeti-Oguz','Fairy Tale Canyon'] },
     includes: { ru: ['Трансфер','Гид','Проживание','Завтраки'], en: ['Transfer','Guide','Stay','Breakfasts'] },
     excludes: { ru: ['Обеды и ужины'], en: ['Lunches and dinners'] },
-    images: ['/tours/konorchek-1.jpg','/tours/konorchek-2.jpg','/tours/son-kol-1.jpg','/tours/chunkurchak-valley.jpg'],
+    images: ['/tours/konorchek-1.jpg','/tours/konorchek-2.jpg','/tours/son-kol-1.jpg','/tours/konorchek-3.jpg'],
     isNew: true, isPopular: true, order: 60
   },
   {
