@@ -31,12 +31,7 @@ export function AboutSlideshow({ title }: Props) {
   }, [go, hasSlides]);
 
   if (!hasSlides) {
-    return (
-      <div className="rounded-2xl border border-dashed border-[#E7E5E4] bg-white p-10 text-center text-sm text-[#78716C]">
-        Добавьте фото в <code className="text-[#B45309]">public/about/</code> и пути в{' '}
-        <code className="text-[#B45309]">src/lib/about-gallery.ts</code>
-      </div>
-    );
+    return null;
   }
 
   const current = slides[index];
@@ -51,9 +46,7 @@ export function AboutSlideshow({ title }: Props) {
       <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-[#E7E5E4] border border-[#E7E5E4]">
         {showPlaceholder ? (
           <div className="absolute inset-0 flex items-center justify-center text-[#78716C] text-sm px-4 text-center">
-            {current.src}
-            <br />
-            (файл пока не загружен)
+            {current.alt}
           </div>
         ) : (
           <Image
@@ -68,7 +61,6 @@ export function AboutSlideshow({ title }: Props) {
           />
         )}
 
-        {/* Controls */}
         <button
           type="button"
           onClick={() => go(-1)}
@@ -86,7 +78,6 @@ export function AboutSlideshow({ title }: Props) {
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Dots */}
         <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
           {slides.map((_, i) => (
             <button
@@ -103,7 +94,6 @@ export function AboutSlideshow({ title }: Props) {
         </div>
       </div>
 
-      {/* Thumbnails */}
       <div className="flex gap-2 overflow-x-auto pb-1">
         {slides.map((s, i) => (
           <button

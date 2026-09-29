@@ -45,6 +45,9 @@ export default async function TourDetailPage({
     { label: t('group'), value: tour.groupSize[loc] },
   ];
 
+  const paragraphs = tour.description[loc].split('\n\n').filter(Boolean);
+  const faq = tour.faq?.[loc] ?? [];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-6 text-sm">
@@ -69,7 +72,13 @@ export default async function TourDetailPage({
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-[#1C1917] mb-4">{tour.title[loc]}</h1>
-            <p className="text-lg text-[#44403C] leading-relaxed">{tour.description[loc]}</p>
+            <div className="space-y-4">
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-lg text-[#44403C] leading-relaxed">
+                  {p}
+                </p>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -154,6 +163,20 @@ export default async function TourDetailPage({
               ))}
             </ul>
           </div>
+
+          {faq.length > 0 && (
+            <div className="bg-white rounded-2xl p-6 border border-[#E7E5E4]">
+              <h3 className="font-semibold text-[#1C1917] mb-5">{t('faq')}</h3>
+              <div className="space-y-5">
+                {faq.map((item, i) => (
+                  <div key={i} className="pb-5 border-b border-[#E7E5E4] last:border-0 last:pb-0">
+                    <div className="font-medium text-[#1C1917] mb-1.5">{item.q}</div>
+                    <p className="text-sm text-[#57534E] leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="lg:col-span-1">
@@ -162,7 +185,8 @@ export default async function TourDetailPage({
             <div className="text-3xl font-bold text-[#B45309] mb-1">
               {tour.priceFrom.toLocaleString('ru-RU')} {tour.currency}
             </div>
-            <div className="text-sm text-[#78716C] mb-4">{t('perPerson')}</div>
+            <div className="text-sm text-[#78716C] mb-1">{t('perPerson')}</div>
+            <p className="text-xs text-[#78716C] leading-relaxed mb-4">{t('priceHint')}</p>
             <TourLeadForm locale={locale} tourTitle={tour.title[loc]} />
             <div className="mt-4 pt-4 border-t border-[#E7E5E4] space-y-2">
               <a href={`tel:${PHONE_DISPLAY.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 w-full border border-[#E7E5E4] hover:border-[#B45309] text-[#1C1917] font-medium py-3 rounded-xl transition text-sm">

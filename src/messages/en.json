@@ -40,7 +40,7 @@
   "tours": {
     "title": "Tours in Kyrgyzstan",
     "subtitle": "North from Bishkek, south from Osh. Prices are from, per person, for a group of 3–4. Final quote depends on dates and party size.",
-    "intro": "Each tour page has an hourly plan, inclusions, difficulty, season and a packing list. Requests go to a manager in CRM.",
+    "intro": "Each tour page has an hourly plan, inclusions, difficulty, season, a packing list and answers to common questions. Requests go to a manager in CRM.",
     "filterAll": "All tours",
     "filterNorth": "North",
     "filterSouth": "South",
@@ -55,6 +55,7 @@
     "program": "Itinerary",
     "goodToKnow": "Good to know",
     "whatToBring": "What to bring",
+    "faq": "Common questions",
     "start": "Start",
     "difficulty": "Level",
     "season": "Season",
@@ -62,6 +63,7 @@
     "bookNow": "Book this tour",
     "priceFrom": "Price from",
     "perPerson": "per person",
+    "priceHint": "For a group of 3–4. Couples and peak dates are quoted separately.",
     "contactUs": "Contact us"
   }
 }
