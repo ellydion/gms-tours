@@ -1,7 +1,16 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale } from 'next-intl/server';
 import { MessageCircle, Phone, FileText, GraduationCap, Home, Languages, Shield, Clock } from 'lucide-react';
 import { VisaLeadForm } from '@/components/VisaLeadForm';
 import { WHATSAPP_URL, PHONE_DISPLAY, PHONE_2_DISPLAY } from '@/lib/contacts';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/visas', 'Visa extension & migration services in Bishkek | GMS', 'Visa extension and processing in Kyrgyzstan, residence permits, registration, document translation. Full support, free first consultation.')
+    : pageMetadata(locale, '/visas', 'Продление визы и миграционные услуги в Бишкеке | GMS', 'Продление и оформление виз в Кыргызстане, ВНЖ, регистрация, переводы документов. Полное сопровождение, бесплатная первая консультация.');
+}
 
 export default async function VisasPage({
   params

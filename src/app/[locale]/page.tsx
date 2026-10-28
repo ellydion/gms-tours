@@ -1,9 +1,18 @@
+import { pageMetadata } from '@/lib/seo';
 import { useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { getPopularTours } from '@/lib/tours';
 import { TourCard } from '@/components/TourCard';
 import { MessageCircle, Mountain, Compass, Heart, Headphones } from 'lucide-react';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '', 'Tours in Kyrgyzstan & visa support in Bishkek | GMS', 'Author tours across Kyrgyzstan from Bishkek and Osh, visa extensions, residence permits and migration support. Free first consultation.')
+    : pageMetadata(locale, '', 'Туры по Кыргызстану и визовая поддержка в Бишкеке | GMS', 'Авторские туры по Кыргызстану из Бишкека и Оша, продление виз, ВНЖ и миграционное сопровождение. Бесплатная первая консультация. GMS, Бишкек.');
+}
 
 export default async function HomePage({
   params

@@ -1,5 +1,14 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale } from 'next-intl/server';
 import { MessageCircle, Phone, Users, Camera, Car, Award, Map, Sparkles } from 'lucide-react';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/events', 'Event organization in Kyrgyzstan | GMS', 'Event and corporate trip organization in Kyrgyzstan by GMS.')
+    : pageMetadata(locale, '/events', 'Организация мероприятий в Кыргызстане | GMS', 'Организация мероприятий и корпоративных поездок в Кыргызстане от GMS.');
+}
 
 export default async function EventsPage({
   params

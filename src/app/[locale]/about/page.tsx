@@ -1,7 +1,16 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale } from 'next-intl/server';
 import { MessageCircle, Phone, FileCheck, Calendar, Car, MapPin, Users, Award } from 'lucide-react';
 import { AboutSlideshow } from '@/components/AboutSlideshow';
 import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY, EMAIL } from '@/lib/contacts';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/about', 'About GMS — Global Migration Solutions, Bishkek', 'Global Migration Solutions LLC: tours in Kyrgyzstan and migration services. Office: Isakeeva 32/2, Bishkek.')
+    : pageMetadata(locale, '/about', 'О компании GMS — Глобальные миграционные решения, Бишкек', 'ОсОО «Глобальные миграционные решения»: туры по Кыргызстану и миграционные услуги. Офис: Исакеева 32/2, Бишкек.');
+}
 
 export default async function AboutPage({
   params,

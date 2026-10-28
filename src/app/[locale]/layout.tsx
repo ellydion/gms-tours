@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing';
 import { Header } from '@/components/Header';
 import { ChatWidget } from '@/components/ChatWidget';
 import '../globals.css';
+import { organizationJsonLd } from '@/lib/seo';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -29,6 +30,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <div className="min-h-screen flex flex-col antialiased bg-[#FAF7F2] text-[#1C1917]">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
         <Header />
         <main className="flex-1">{children}</main>
         <ChatWidget />

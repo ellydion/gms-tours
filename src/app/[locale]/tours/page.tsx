@@ -1,7 +1,16 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getTours } from '@/lib/tours';
 import { TourCard } from '@/components/TourCard';
 import Link from 'next/link';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/tours', 'Tours in Kyrgyzstan from Bishkek and Osh — prices | GMS', 'One-day and multi-day tours in Kyrgyzstan: Ala-Archa, Son-Kul, Issyk-Kul, Arslanbob, Sary-Chelek. Small groups.')
+    : pageMetadata(locale, '/tours', 'Туры по Кыргызстану из Бишкека и Оша — цены | GMS', 'Однодневные и многодневные туры по Кыргызстану: Ала-Арча, Сон-Куль, Иссык-Куль, Арсланбоб, Сары-Челек. Цены в сомах, мини-группы.');
+}
 
 export default async function ToursPage({
   params,
