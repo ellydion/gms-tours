@@ -110,7 +110,7 @@ export function AboutSlideshow({ title }: Props) {
             ) : (
               <Image
                 src={s.src}
-                alt=""
+                alt={`${s.alt} — миниатюра`}
                 fill
                 className="object-cover"
                 sizes="80px"

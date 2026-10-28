@@ -1,7 +1,16 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getTours } from '@/lib/tours';
 import { TourCard } from '@/components/TourCard';
 import Link from 'next/link';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/tours/north', 'Northern Kyrgyzstan tours from Bishkek | GMS', 'Tours from Bishkek: Ala-Archa, Chunkurchak, Burana, Konorchek, Son-Kul, Issyk-Kul.')
+    : pageMetadata(locale, '/tours/north', 'Туры по северу Кыргызстана из Бишкека | GMS', 'Туры из Бишкека: Ала-Арча, Чункурчак, Бурана, Конорчек, Сон-Куль, Иссык-Куль.');
+}
 
 export default async function NorthToursPage({
   params

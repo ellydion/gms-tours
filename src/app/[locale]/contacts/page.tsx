@@ -1,6 +1,15 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale } from 'next-intl/server';
 import { MessageCircle, Phone, MapPin, Mail, Send } from 'lucide-react';
 import { WHATSAPP_URL, TELEGRAM_URL, PHONE_DISPLAY, PHONE_2_DISPLAY, EMAIL } from '@/lib/contacts';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/contacts', 'Contacts — GMS, Bishkek', 'Phones, WhatsApp and office address of GMS in Bishkek.')
+    : pageMetadata(locale, '/contacts', 'Контакты GMS — Бишкек, Исакеева 32/2', 'Телефоны, WhatsApp и адрес офиса GMS в Бишкеке. Бесплатная первая консультация по визам и турам.');
+}
 
 export default async function ContactsPage({
   params

@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { TourGallery } from '@/components/TourGallery';
@@ -12,6 +13,16 @@ export function generateStaticParams() {
     { locale: 'ru', slug: tour.slug },
     { locale: 'en', slug: tour.slug },
   ]);
+}
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const tour = getTourBySlug(slug);
+  if (!tour) return {};
+  const loc = locale === 'en' ? 'en' : 'ru';
+  const title = loc === 'en' ? `${tour.title.en} — from ${tour.priceFrom} KGS | GMS` : `${tour.title.ru} — от ${tour.priceFrom} сом | GMS`;
+  return pageMetadata(locale, `/tours/${slug}`, title, tour.shortDescription[loc], tour.images[0]);
 }
 
 export default async function TourDetailPage({

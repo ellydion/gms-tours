@@ -1,7 +1,16 @@
+import { pageMetadata } from '@/lib/seo';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getTours } from '@/lib/tours';
 import { TourCard } from '@/components/TourCard';
 import Link from 'next/link';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return locale === 'en'
+    ? pageMetadata(locale, '/tours/south', 'Southern Kyrgyzstan tours from Osh | GMS', 'Tours from Osh: Arslanbob, Sary-Chelek, Osh and Sulaiman-Too.')
+    : pageMetadata(locale, '/tours/south', 'Туры по югу Кыргызстана из Оша | GMS', 'Туры из Оша: Арсланбоб, Сары-Челек, Ош и Сулайман-Тоо.');
+}
 
 export default async function SouthToursPage({
   params
